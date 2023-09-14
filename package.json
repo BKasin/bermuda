@@ -108,7 +108,7 @@
     "file-loader": "^6.2.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.4.5",
-    "postcss-loader": "^6.2.1",
+    "postcss-loader": "^7.3.3",
     "prettier": "^3.0.3",
     "style-loader": "^3.3.3",
     "tailwindcss": "^2.2.19",
