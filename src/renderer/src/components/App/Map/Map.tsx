@@ -25,7 +25,7 @@ const Map = ({ location, setLocation }: MapProps) => {
   const icon = divIcon({
     className: 'map-marker-icon',
     html: renderToString(
-      <FontAwesomeIcon icon={faMapMarkerAlt} size='2x' color='white' />
+      <FontAwesomeIcon icon={faMapMarkerAlt} size='2x' color='white' />,
     ),
   });
 
@@ -42,7 +42,7 @@ const Map = ({ location, setLocation }: MapProps) => {
         });
       },
     }),
-    [setLocation]
+    [setLocation],
   );
 
   return (

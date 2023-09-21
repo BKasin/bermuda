@@ -11,7 +11,7 @@ import path from 'path';
  * @returns - Device Category Enum
  */
 export const convertDeviceClassToEnum = (
-  deviceClass: string
+  deviceClass: string,
 ): DeviceCategory => {
   switch (deviceClass) {
     case 'iPad':
@@ -32,11 +32,11 @@ export const convertDeviceClassToEnum = (
  */
 export const convertProductTypeToFriendlyName = (
   productType: string,
-  category: DeviceCategory
+  category: DeviceCategory,
 ): string => {
   // Perform a search through device dictionary to identify the device based on model number
   const productSearch = deviceDictionary.filter(
-    (dictionaryItem) => dictionaryItem.model === productType
+    (dictionaryItem) => dictionaryItem.model === productType,
   );
 
   // If the item is found (list not empty) return the device name
@@ -60,12 +60,12 @@ export const getExecutablePath = (executable: string) => {
       if (process.arch === 'arm64') {
         return path.join(
           '/opt/homebrew/Cellar/libimobiledevice/1.3.0/bin',
-          executable
+          executable,
         );
       } else {
         return path.join(
           '/usr/local/Cellar/libimobiledevice/1.3.0/bin',
-          executable
+          executable,
         );
       }
     }
@@ -79,7 +79,7 @@ export const getExecutablePath = (executable: string) => {
         return path.join(
           process.resourcesPath,
           './assets/win-x64/',
-          `${executable}.exe`
+          `${executable}.exe`,
         );
       }
     }

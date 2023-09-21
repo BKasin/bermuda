@@ -10,7 +10,7 @@ export const useStatusMessages = () => {
       color: '#fff',
       marginTop: '2rem',
     }),
-    []
+    [],
   );
 
   useEffect(() => {

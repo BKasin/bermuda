@@ -13,7 +13,7 @@ export const mountDiskImage = async (
   deviceUDID: string,
   diskImagePath: string,
   diskImageSignaturePath: string,
-  executablePath: string
+  executablePath: string,
 ): Promise<boolean> =>
   new Promise(async (resolve, reject) => {
     // Spawn imagemounter with parameters of UDID, disk image path, and disk image signature path

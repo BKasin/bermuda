@@ -17,7 +17,7 @@ import {
  * @returns - Promise<string[]> of device UDIDs
  */
 export const getConnectedDeviceIds = async (
-  executablePath: string
+  executablePath: string,
 ): Promise<string[]> =>
   new Promise(async (resolve, reject) => {
     // Spawn the devicelist executable w/ --list param
@@ -52,7 +52,7 @@ export const getConnectedDeviceIds = async (
  */
 export const getConnectedDeviceInfo = async (
   executablePath: string,
-  deviceUDID: string
+  deviceUDID: string,
 ): Promise<Device> =>
   new Promise(async (resolve, reject) => {
     // Spawn the deviceinfo executable w/ UDID as a parameter
@@ -97,7 +97,7 @@ export const getConnectedDeviceInfo = async (
           version: productVersionMatch[0],
           model: convertProductTypeToFriendlyName(
             productTypeMatch[0],
-            category
+            category,
           ),
         },
       };

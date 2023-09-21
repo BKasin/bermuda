@@ -36,7 +36,7 @@ const LocationEntry = ({
       <form
         id='location-entry-form'
         onSubmit={handleSubmit((data) =>
-          handleCoordinateUpdate(data.coordinates)
+          handleCoordinateUpdate(data.coordinates),
         )}
       >
         <input

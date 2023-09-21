@@ -38,7 +38,7 @@ const DeviceSelector = ({
     // If there is a currently selected device, update it's state
     if (selectedDevice) {
       setSelectedDevice(
-        devices.filter((device) => device.udid === selectedDevice.udid)[0]
+        devices.filter((device) => device.udid === selectedDevice.udid)[0],
       );
     }
 
@@ -66,7 +66,7 @@ const DeviceSelector = ({
    */
   const renderDevices = (
     curDevices: Device[],
-    curSelectedDevice: Device | null
+    curSelectedDevice: Device | null,
   ) => {
     // If the panel is open build JSX[] of DeviceSelectorItems and return
     // Note: There is a conditional prop that is spread of selectedDevice, if a device is selected (neat right?)
@@ -86,7 +86,7 @@ const DeviceSelector = ({
 
     // Panel not open, filter for only selected device
     let deviceSearch = curDevices.filter(
-      (device) => device.udid === curSelectedDevice?.udid
+      (device) => device.udid === curSelectedDevice?.udid,
     );
 
     // This is awkward, no selected device was found

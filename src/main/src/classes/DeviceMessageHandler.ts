@@ -14,7 +14,7 @@ export class DeviceMessageHandler {
 
   constructor(
     getAppWindow: () => BrowserWindow,
-    getDeviceManager: () => DeviceManager
+    getDeviceManager: () => DeviceManager,
   ) {
     this.getAppWindow = getAppWindow;
     this.getDeviceManager = getDeviceManager;
@@ -33,7 +33,7 @@ export class DeviceMessageHandler {
         if (message.payload.location) {
           this.getDeviceManager().setLocation(
             message.payload.udid,
-            message.payload.location
+            message.payload.location,
           );
         }
         break;

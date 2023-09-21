@@ -33,22 +33,22 @@ export class DeviceManager {
     try {
       // Scan all connected devices and retrieve device UDIDs
       const latestDeviceIds = await getConnectedDeviceIds(
-        getExecutablePath('idevice_id')
+        getExecutablePath('idevice_id'),
       );
 
       // Remove any devices which have been disconnected
       this.devices = this.devices.filter((device) =>
-        latestDeviceIds.includes(device.udid)
+        latestDeviceIds.includes(device.udid),
       );
 
       // Map over known connected device UDIDs
       const knownDeviceIds = this.devices.map(
-        (knownDevice) => knownDevice.udid
+        (knownDevice) => knownDevice.udid,
       );
 
       // Filter out any known device IDs to prevent grabbing information from the same device twice
       const unknownDevices = latestDeviceIds.filter(
-        (deviceId) => !knownDeviceIds.includes(deviceId)
+        (deviceId) => !knownDeviceIds.includes(deviceId),
       );
 
       // If there are unknown devices, retrieve their information and add them to the devices array
@@ -57,11 +57,11 @@ export class DeviceManager {
           unknownDevices.map(async (unknownDeviceId) => {
             let device: Device = await getConnectedDeviceInfo(
               getExecutablePath('ideviceinfo'),
-              unknownDeviceId
+              unknownDeviceId,
             );
 
             this.devices = [...this.devices, device];
-          })
+          }),
         );
       }
     } catch (err) {
@@ -80,7 +80,7 @@ export class DeviceManager {
   mountDiskImage = async (udid: string): Promise<void> => {
     // Filter through connected devices to see if UDID provided is a valid connected device
     const selectedDeviceSearch = this.devices.filter(
-      (device) => device.udid === udid
+      (device) => device.udid === udid,
     );
 
     // If the UDID does not map to a known connected device, abort.
@@ -97,7 +97,7 @@ export class DeviceManager {
       if (diskImagePath.filePaths.length === 0) {
         return this.getDeviceMessageHandler().sendStatusMessage(
           StatusMessageType.Error,
-          'No developer disk image selected'
+          'No developer disk image selected',
         );
       }
 
@@ -113,7 +113,7 @@ export class DeviceManager {
       if (diskImageSignaturePath.filePaths.length === 0) {
         return this.getDeviceMessageHandler().sendStatusMessage(
           StatusMessageType.Error,
-          'No developer disk image signature selected'
+          'No developer disk image signature selected',
         );
       }
 
@@ -122,7 +122,7 @@ export class DeviceManager {
         udid,
         diskImagePath.filePaths[0],
         diskImageSignaturePath.filePaths[0],
-        getExecutablePath('ideviceimagemounter')
+        getExecutablePath('ideviceimagemounter'),
       );
 
       // If the above is successful, will update the connected device list to mark the device as being in developer mode
@@ -144,13 +144,13 @@ export class DeviceManager {
       // Sends a status message via message handler to user, notifying them of successful developer mode mount
       this.getDeviceMessageHandler().sendStatusMessage(
         StatusMessageType.Success,
-        'Developer Mode Enabled'
+        'Developer Mode Enabled',
       );
     } catch (err: any) {
       // Catch any error and send error message to user via message handler
       this.getDeviceMessageHandler().sendStatusMessage(
         StatusMessageType.Error,
-        err
+        err,
       );
     }
   };
@@ -163,7 +163,7 @@ export class DeviceManager {
   setLocation = async (udid: string, location: string) => {
     // Filter through connected devices to see if UDID provided is a valid connected device
     const selectedDeviceSearch = this.devices.filter(
-      (device) => device.udid === udid
+      (device) => device.udid === udid,
     );
 
     // If the UDID does not map to a known connected device, abort.
@@ -174,19 +174,19 @@ export class DeviceManager {
       await updateLocation(
         udid,
         location,
-        getExecutablePath('idevicesetlocation')
+        getExecutablePath('idevicesetlocation'),
       );
 
       // Sends a status message via message handler to user, notifying them of successful location update
       this.getDeviceMessageHandler().sendStatusMessage(
         StatusMessageType.Success,
-        'Location updated'
+        'Location updated',
       );
     } catch (err: any) {
       // Send a generic failed to update location message
       this.getDeviceMessageHandler().sendStatusMessage(
         StatusMessageType.Error,
-        'Failed to update location'
+        'Failed to update location',
       );
     }
   };

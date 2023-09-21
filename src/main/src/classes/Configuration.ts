@@ -16,7 +16,7 @@ export class Configuration {
 
     this.deviceMessageHandler = new DeviceMessageHandler(
       this.getAppWindow,
-      this.getDeviceManager
+      this.getDeviceManager,
     );
   }
 

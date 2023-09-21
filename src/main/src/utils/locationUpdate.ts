@@ -10,7 +10,7 @@ import { spawn } from 'child_process';
 export const updateLocation = async (
   deviceUDID: string,
   location: string,
-  executablePath: string
+  executablePath: string,
 ): Promise<void> =>
   new Promise(async (resolve, reject) => {
     const locationArgs = location.split(',');
